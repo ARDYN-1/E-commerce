@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+
+
+
+
+</head>
+
+<body>
+    <header>
+
+        <!--Navbar-->
+        <div class="navbar">
+            <div class="navbar-pt1">
+                <a href="#">Shop</a>
+                <a href="#">Product</a>
+                <a href="#">Sale</a>
+            </div>
+            <div class="nav-logo">
+                <div class="logo"></div>
+
+            </div>
+            <div class="nav-icon">
+                <a href="javascript:void(0);" class="search-icon" onclick="openSidebar()"> <i
+                        class="fa-solid fa-magnifying-glass"></i></a>
+                <!-- Sidebar -->
+                <div id="sidebar" class="sidebar">
+                    <a href="javascript:void(0)" class="closebtn">&times;</a>
+                    <input type="text" class="sidebar-search-box" placeholder="Search here...">
+                    <a href="#">Recent Search</a>
+                    <a href="#">Popular Item</a>
+                </div>
+
+                <!-- Overlay -->
+                <div id="overlay" class="overlay"></div>
+
+
+                <a href=""><i class="fa-solid fa-user"></i></a>
+                <div class="sidebar" id="userSidebar">
+                    <a href="javascript:void(0)" class="closebtn">&times;</a>
+                    <div class="login-container">
+                        <h2>Login</h2>
+                        <form id="emailLoginForm">
+                            <input type="email" placeholder="Email" required />
+                            <input type="password" placeholder="Password" required />
+                            <button type="submit">Login</button>
+                        </form>
+
+                        <div class="divider">or</div>
+
+                        <button class="google-login-btn" onclick="googleLogin()">
+>
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" />
+                            Login with Google
+                        </button>
+                    </div>
+                </div>
+
+
+                <a href="#"> <i class="fa-regular fa-heart"></i></a>
+                <a href="#"> <i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+    </header>
+    <div class="hero-section">
+        <div class="hero1">
+            <p class="slide-effect">NEW ARRIVAL</p>
+        </div>
+        <div class="hero2">
+            <p class="slide-effect2">FOR YOUR BEDROOM</p>
+        </div>
+        <div class="hero3">
+            <a href="#" target="_blank">
+                <button style="cursor: pointer;" class="slide-effect3">Shop Now</button>
+            </a>
+
+        </div>
+
+    </div>
+    <div class="bottom-hero">
+        <div class="text slide-effect2">
+
+            <h3> New In Products
+            </h3>
+        </div>
+    </div>
+    <div class="text2 slide-effect2">
+        <p>Here’s some of our most popular products people are in love with.</p>
+    </div>
+
+
+    <!--Shop Section-->
+    <div class="shop-section ">
+        <div class="box1 box slide-effect">
+            <div class="box-content">
+
+                <div class="box-img" style="background-image: url('Product1.jpg');"></div>
+                <p>SBeautyrest 100% Cotton Blanket<br>
+                    <span class="old-price">Rs. 30,100.00</span>&nbsp;<span class="price">26,400.00</span>
+                </p>
+            </div>
+        </div>
+        <div class="box2 box slide-effect">
+            <div class="box-content">
+
+                <div class="box-img" style="background-image: url('Product2.jpg');"></div>
+                <p>Berkshire Blanket-Wafflebr <br>
+                    <span class="price"> Rs. 37,200.00</span>
+                </p>
+            </div>
+        </div>
+        <div class="box3 box slide-effect">
+            <div class="box-content">
+
+                <div class="box-img" style="background-image: url('Product3.jpg');"></div>
+                <p>Berkshire Blanket-Waffle <br>
+                    <span class="old-price">Rs. 30,100.00R</span>&nbsp;<span class="price">Rs. 26,400.00</span>
+                </p>
+            </div>
+        </div>
+        <div class="box4 box slide-effect">
+            <div class="box-content">
+
+                <div class="box-img" style="background-image: url('Product4.jpg');"></div>
+                <p>Cotton Weave Diamond Blanket <br>
+                    <span class="old-price"> 47,800.00</span>&nbsp;<span class="price">Rs. 44,100.00</span>
+                </p>
+            </div>
+        </div>
+
+        <!--next boxs-->
+        <div class="box1 box slide-effect">
+            <div class="box-content">
+                <div class="box-img" style="background-image: url('Product5.jpg');"></div>
+                <p>Gel Memory Foam Pillow<br>
+                    <span class="price"> Rs. 28,300.00</span>
+                </p>
+            </div>
+        </div>
+        <div class="box2 box slide-effect">
+            <div class="box-content">
+
+                <div class="box-img" style="background-image: url('Product6.jpg');"></div>
+                <p>Hotel Linen Klub Standard Pillowcase <br>
+                    <span class="old-price">Rs. 2,600.00</span>&nbsp;<span class="price">Rs. 2,400.00</span>
+                </p>
+            </div>
+        </div>
+        <div class="box3 box slide-effect">
+            <div class="box-content">
+
+                <div class="box-img" style="background-image: url('Product7.jpg');"></div>
+                <p>Mellow Naturalista Classic 12 Inch <br>
+                    <span class="price"> Rs. 8,200.00 </span>
+                </p>
+            </div>
+        </div>
+        <div class="box4 box slide-effect">
+            <div class="box-content">
+
+                <div class="box-img" style="background-image: url('Product8.jpg');"></div>
+                <p>Sage Blue Throw Blanket <br>
+                    <span class="price"> Rs. 10,700.00</span>
+                </p>
+            </div>
+        </div>
+
+
+        
+<script type="module" src="firebase-auth.js"></script>
+<script src="script.js"></script>
+
+
+
+</body>
+
+</html>
