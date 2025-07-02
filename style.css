@@ -3,6 +3,9 @@
   padding: 0;
   font-family: Arial;
 }
+body, html{
+  overflow-x: hidden;
+}
 
 body {
   background-color: white;
@@ -40,10 +43,12 @@ body {
 }
 
 .logo {
-  height: 36px;
-  width: 130px;
-  background-image: url(logo.avif);
-  background-size: cover;
+  height: 40px;
+  width: 90px;
+  background-image: url(logo1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 15px;
 }
 
 .nav-icon i {
