@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product View</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    img { width: 300px; height: auto; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <h1 id="name">Loading...</h1>
+  <img id="image" src="" alt="Product Image">
+  <h2 id="price"></h2>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const products = {
+      1: {
+        name: "Royal Double Bed",
+        price: "₹12,499",
+        image: "images/double-bed.jpg"
+      },
+      2: {
+        name: "Classic Single Bed",
+        price: "₹6,999",
+        image: "images/single-bed.jpg"
+      }
+    };
+
+    const product = products[id];
+
+    if (product) {
+      document.getElementById("name").innerText = product.name;
+      document.getElementById("price").innerText = "Price: " + product.price;
+      document.getElementById("image").src = product.image;
+      document.getElementById("image").alt = product.name;
+    } else {
+      document.getElementById("name").innerText = "Product Not Found";
+    }
+  </script>
+</body>
+</html>
