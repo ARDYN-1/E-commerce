@@ -114,7 +114,9 @@ body {
     opacity: 1;
   }
 }
-
+#emailLoginForm{
+  text-align: center;
+}
 
 
 .hero2 {
@@ -549,7 +551,7 @@ cursor: pointer;
 
 .best-backg {
   height: 300px;
-  width: 25%;
+  width: 350px;
   margin-left: 25px;
   margin-right: 20px;
   margin-top: 10px;
@@ -557,7 +559,6 @@ cursor: pointer;
   background-repeat: no-repeat;
   transition: transform 0.4s ease-in-out;
   transform-origin: center;
-  will-change: transform;
 
 }
 
