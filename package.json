@@ -1,0 +1,27 @@
+{
+  "name": "bedly-ecommerce",
+  "version": "1.0.0",
+  "description": "Bedly - Premium Bedroom Essentials E-commerce Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "start": "python -m http.server 3000",
+    "serve": "python -m http.server 3000"
+  },
+  "keywords": [
+    "ecommerce",
+    "bedding",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Amit Pramanik",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/bedly-ecommerce.git"
+  },
+  "homepage": "https://e-commerceewebsite.netlify.app",
+  "devDependencies": {},
+  "dependencies": {}
+}
