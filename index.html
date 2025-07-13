@@ -1,456 +1,535 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bedly.com</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="style.css">
-
-
-
-
-
+    <title>Bedly - Premium Bedroom Essentials</title>
+    <meta name="description" content="Discover premium bedroom essentials at Bedly. Quality bedding, mattresses, and furniture for your perfect sleep sanctuary.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
 </head>
-
 <body>
-    <header>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading Bedly...</p>
+    </div>
 
-        <!--Navbar-->
-        <div class="navbar">
-            <div class="navbar-pt1">
-                <a href="#">Shop</a>
-                <a href="#">Premium</a>
-
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <img src="logo1.png" alt="Bedly" class="logo">
             </div>
-            <div class="nav-logo">
-                <div class="logo"></div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#products" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#bedding" class="dropdown-item">Bedding</a>
+                        <a href="#mattresses" class="dropdown-item">Mattresses</a>
+                        <a href="#pillows" class="dropdown-item">Pillows</a>
+                        <a href="#furniture" class="dropdown-item">Furniture</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
 
+            <div class="nav-actions">
+                <button class="search-btn" id="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="user-btn" id="user-btn">
+                    <i class="fas fa-user"></i>
+                </button>
+                <button class="wishlist-btn" id="wishlist-btn">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="wishlist-count">0</span>
+                </button>
+                <button class="cart-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
-            <div class="nav-icon">
-                <a href="javascript:void(0);" class="search-icon" onclick="openSidebar()"> <i
-                        class="fa-solid fa-magnifying-glass"></i></a>
-                <!-- Sidebar -->
-                <div id="sidebar" class="sidebar">
-                    <a href="javascript:void(0)" class="closebtn">&times;</a>
-                    <input type="text" class="sidebar-search-box" placeholder="Search here...">
-                    <a href="#">Recent Search</a>
-                    <a href="#">Popular Item</a>
+        </nav>
+    </header>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-modal-content">
+            <button class="search-close" id="search-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="search-box">
+                <input type="text" placeholder="Search for products..." id="search-input">
+                <button class="search-submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="search-suggestions" id="search-suggestions">
+                <h4>Popular Searches</h4>
+                <div class="suggestion-tags">
+                    <span class="tag">Bedsheets</span>
+                    <span class="tag">Pillows</span>
+                    <span class="tag">Mattresses</span>
+                    <span class="tag">Comforters</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Modal -->
+    <div class="user-modal" id="user-modal">
+        <div class="user-modal-content">
+            <button class="user-close" id="user-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Login</button>
+                    <button class="auth-tab" data-tab="register">Register</button>
+                </div>
+                
+                <div class="auth-content">
+                    <div class="auth-panel active" id="login-panel">
+                        <form class="auth-form" id="login-form">
+                            <div class="form-group">
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                        
+                        <div class="divider">
+                            <span>or</span>
+                        </div>
+                        
+                        <button class="btn btn-google" id="google-login">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google">
+                            Continue with Google
+                        </button>
+                    </div>
+                    
+                    <div class="auth-panel" id="register-panel">
+                        <form class="auth-form" id="register-form">
+                            <div class="form-group">
+                                <input type="text" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Confirm Password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Create Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" id="cart-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total: <strong id="cart-total">₹0</strong></span>
+            </div>
+            <button class="btn btn-primary btn-block">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-slider">
+                <div class="hero-slide active" style="background-image: url('hero.jpeg')">
+                    <div class="hero-content container">
+                        <div class="hero-text">
+                            <span class="hero-badge">New Collection</span>
+                            <h1 class="hero-title">Transform Your Bedroom Into a Sanctuary</h1>
+                            <p class="hero-description">Discover our premium collection of bedding, mattresses, and furniture designed for ultimate comfort and style.</p>
+                            <div class="hero-actions">
+                                <a href="#products" class="btn btn-primary">Shop Now</a>
+                                <a href="#about" class="btn btn-outline">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide" style="background-image: url('hero2.jpeg')">
+                    <div class="hero-content container">
+                        <div class="hero-text">
+                            <span class="hero-badge">Premium Quality</span>
+                            <h1 class="hero-title">Luxury Bedding Collection</h1>
+                            <p class="hero-description">Experience unparalleled comfort with our handpicked selection of premium bedding essentials.</p>
+                            <div class="hero-actions">
+                                <a href="#products" class="btn btn-primary">Explore Collection</a>
+                                <a href="#contact" class="btn btn-outline">Get Consultation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-nav">
+                <button class="hero-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="hero-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="hero-indicators">
+                <span class="indicator active"></span>
+                <span class="indicator"></span>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>Free Shipping</h3>
+                        <p>Free delivery on orders above ₹2,999</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Payment</h3>
+                        <p>100% secure payment processing</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>24/7 Support</h3>
+                        <p>Round-the-clock customer service</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <h3>Easy Returns</h3>
+                        <p>30-day hassle-free returns</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products" id="products">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Products</h2>
+                    <p class="section-description">Discover our most popular bedroom essentials</p>
                 </div>
 
-                <!-- Overlay  -->
-                <div id="overlay" class="overlay"></div>
+                <div class="product-filters">
+                    <button class="filter-btn active" data-filter="all">All Products</button>
+                    <button class="filter-btn" data-filter="bedding">Bedding</button>
+                    <button class="filter-btn" data-filter="mattresses">Mattresses</button>
+                    <button class="filter-btn" data-filter="pillows">Pillows</button>
+                    <button class="filter-btn" data-filter="furniture">Blankets</button>
+                </div>
 
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be loaded dynamically -->
+                </div>
 
-                <a href=""><i class="fa-solid fa-user"></i></a>
-                <div class="sidebar" id="userSidebar">
-                    <a href="javascript:void(0)" class="closebtn">&times;</a>
-                    <div class="login-container">
-                        <h2>Login</h2>
-                        <form id="emailLoginForm">
-                            <input type="email" placeholder="Email" class="input" required />
-                            <input type="password" placeholder="Password" class="input" required />
-                            <button type="submit">Login</button>
-                        </form>
+                <div class="load-more-container">
+                    <button class="btn btn-outline" id="load-more">Load More Products</button>
+                </div>
+            </div>
+        </section>
 
-                        <div class="divider">or</div>
+        <!-- Premium Collection -->
+        <section class="premium-collection">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Premium Collection</h2>
+                    <p class="section-description">Luxury bedding for the discerning customer</p>
+                </div>
 
-                        <button class="google-login-btn" onclick="googleLogin()">
-                            
-                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" />
+                <div class="premium-grid">
+                    <div class="premium-card">
+                        <div class="premium-image" style="background-image: url('hot-pro1.jpg')"></div>
+                        <div class="premium-content">
+                            <h3>Egyptian Cotton Collection</h3>
+                            <p>Experience the ultimate in luxury with our 1000 thread count Egyptian cotton bedding.</p>
+                            <div class="premium-price">
+                                <span class="old-price">₹22,600</span>
+                                <span class="new-price">₹18,300</span>
+                            </div>
+                            <div class="premium-actions">
+                                <button class="btn btn-primary">Shop Now</button>
+                                <button class="btn btn-outline">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
 
-                            Login with Google
-                        </button>
+                    <div class="premium-card">
+                        <div class="premium-image" style="background-image: url('hot-pro2.jpg')"></div>
+                        <div class="premium-content">
+                            <h3>Memory Foam Mattress</h3>
+                            <p>Revolutionary comfort technology for the perfect night's sleep every night.</p>
+                            <div class="premium-price">
+                                <span class="old-price">₹45,000</span>
+                                <span class="new-price">₹38,999</span>
+                            </div>
+                            <div class="premium-actions">
+                                <button class="btn btn-primary">Shop Now</button>
+                                <button class="btn btn-outline">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bestsellers -->
+        <section class="bestsellers">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Bestsellers Under ₹7,499</h2>
+                    <p class="section-description">Top-rated products at unbeatable prices</p>
+                </div>
+
+                <div class="bestsellers-grid">
+                    <div class="bestseller-card">
+                        <div class="bestseller-image" style="background-image: url('best-product1.jpg')"></div>
+                        <div class="bestseller-content">
+                            <h4>Soft Velvet Quilted Bed Cover</h4>
+                            <div class="bestseller-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span>(124 reviews)</span>
+                            </div>
+                            <div class="bestseller-price">
+                                <span class="old-price">₹12,600</span>
+                                <span class="new-price">₹7,300</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm add-to-cart" data-product-id="1">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bestseller-card">
+                        <div class="bestseller-image" style="background-image: url('best-product2.jpg')"></div>
+                        <div class="bestseller-content">
+                            <h4>Royal Orchid Bedsheet Set</h4>
+                            <div class="bestseller-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(89 reviews)</span>
+                            </div>
+                            <div class="bestseller-price">
+                                <span class="old-price">₹9,999</span>
+                                <span class="new-price">₹6,999</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm add-to-cart" data-product-id="2">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bestseller-card">
+                        <div class="bestseller-image" style="background-image: url('best-product3.jpg')"></div>
+                        <div class="bestseller-content">
+                            <h4>Hybrid Wood & Metal Bed Frame</h4>
+                            <div class="bestseller-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <span>(67 reviews)</span>
+                            </div>
+                            <div class="bestseller-price">
+                                <span class="old-price">₹8,999</span>
+                                <span class="new-price">₹7,499</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm add-to-cart" data-product-id="3">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <div class="bestseller-card">
+                        <div class="bestseller-image" style="background-image: url('best-product4.jpg')"></div>
+                        <div class="bestseller-content">
+                            <h4>Anti-Gravity Latex Mattress</h4>
+                            <div class="bestseller-rating">
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span>(156 reviews)</span>
+                            </div>
+                            <div class="bestseller-price">
+                                <span class="old-price">₹9,999</span>
+                                <span class="new-price">₹6,999</span>
+                            </div>
+                            <button class="btn btn-primary btn-sm add-to-cart" data-product-id="4">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-text">
+                        <h3>Stay Updated</h3>
+                        <p>Subscribe to our newsletter for exclusive offers and new arrivals</p>
+                    </div>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="logo1.png" alt="Bedly" class="footer-logo">
+                        <p>Transform your bedroom into a sanctuary of comfort and style with our premium collection.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
                     </div>
                 </div>
 
-
-                <a href="#"> <i class="fa-regular fa-heart"></i></a>
-                <a href="#"> <i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
-        </div>
-    </header>
-    <!--  hero section -->
-    <div class="hero-section">
-        <div class="hero1">
-            <p class="slide-effect">NEW ARRIVAL</p>
-        </div>
-        <div class="hero2">
-            <p class="slide-effect2">FOR YOUR BEDROOM</p>
-        </div>
-        <div class="hero3">
-            <a href="#" target="_blank">
-                <button style="cursor: pointer;" class="slide-effect3 button1">Shop Now</button>
-            </a>
-
-        </div>
-
-    </div>
-    <div class="bottom-hero">
-        <div class="text slide-effect2">
-
-            <h3> New In Products
-            </h3>
-        </div>
-    </div>
-    <div class="text2 slide-effect2">
-        <p>Here’s some of our most popular products people are in love with.</p>
-    </div>
-
-
-    <!--Shop Section-->
-    <div class="shop-section ">
-
-        <div class="box1 box slide-effect">
-            <a href="http://127.0.0.1:5500/view.html" style="text-decoration: none;">
-                <div class="box-content">
-
-                    <div class="box-img" style="background-image: url('Product1.jpg'); "></div>
-                    <p>SBeautyrest 100% Cotton Blanket<br>
-                        <span class="old-price">Rs. 30,100.00</span>&nbsp;<span class="price">26,400.00</span>
-                    </p>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Bedding</a></li>
+                        <li><a href="#">Mattresses</a></li>
+                        <li><a href="#">Pillows</a></li>
+                        <li><a href="#">Furniture</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
                 </div>
-            </a>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="box2 box slide-effect">
-            <div class="box-content">
 
-                <div class="box-img" style="background-image: url('Product2.jpg');"></div>
-                <p>Berkshire Blanket-Wafflebr <br>
-                    <span class="price"> Rs. 37,200.00</span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="box3 box slide-effect">
-            <div class="box-content">
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
 
-                <div class="box-img" style="background-image: url('Product3.jpg');"></div>
-                <p>Berkshire Blanket-Waffle <br>
-                    <span class="old-price">Rs. 30,100.00R</span>&nbsp;<span class="price">Rs. 26,400.00</span>
-                </p>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
 
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="box4 box slide-effect">
-            <div class="box-content">
-
-                <div class="box-img" style="background-image: url('Product4.jpg');"></div>
-                <p>Cotton Weave Diamond Blanket <br>
-                    <span class="old-price"> 47,800.00</span>&nbsp;<span class="price">Rs. 44,100.00</span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-
-        <!--next boxs-->
-        <div class="box1 box slide-effect">
-            <div class="box-content">
-                <div class="box-img" style="background-image: url('Product5.jpg');"></div>
-                <p>Gel Memory Foam Pillow<br>
-                    <span class="price"> Rs. 28,300.00</span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="box2 box slide-effect">
-            <div class="box-content">
-
-                <div class="box-img" style="background-image: url('Product6.jpg');"></div>
-                <p>Hotel Linen Klub Standard Pillowcase <br>
-                    <span class="old-price">Rs. 2,600.00</span>&nbsp;<span class="price">Rs. 2,400.00</span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="box3 box slide-effect">
-            <div class="box-content">
-
-                <div class="box-img" style="background-image: url('Product7.jpg');"></div>
-                <p>Mellow Naturalista Classic 12 Inch <br>
-                    <span class="price"> Rs. 8,200.00 </span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="box4 box slide-effect">
-            <div class="box-content">
-
-                <div class="box-img" style="background-image: url('Product8.jpg');"></div>
-                <p>Sage Blue Throw Blanket <br>
-                    <span class="price"> Rs. 10,700.00</span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <!--next boxs-->
-        <div class="box1 box slide-effect">
-            <div class="box-content">
-                <div class="box-img" style="background-image: url('Product9.jpg');"></div>
-                <p>Fluffy Comforter Set Bedding <br>
-                    <span class="price"> Rs. 38,300.00</span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="box2 box slide-effect">
-            <div class="box-content">
-
-                <div class="box-img" style="background-image: url('Product10.jpg');"></div>
-                <p>Microfibre Reversible Comforter <br>
-                    <span class="old-price">Rs. 2,6000.00</span>&nbsp;<span class="price">Rs. 18,499.00</span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="box3 box slide-effect">
-            <div class="box-content">
-
-                <div class="box-img" style="background-image: url('Product11.jpg');"></div>
-                <p>Unisex Blue 150 GSM Microfiber<br>
-                    <span class="price"> Rs. 9,00.00 </span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-        <div class="box4 box slide-effect">
-            <div class="box-content">
-
-                <div class="box-img" style="background-image: url('Product12.jpg');"></div>
-                <p> Arabica Comforter<br>
-                    <span class="price"> Rs. 11,700.00</span>
-                </p>
-            </div>
-            <button class="cart-btn">Add to<i class="fa-solid fa-cart-shopping"></i></button>
-        </div>
-    </div>
-    <div class="hotpro-heading">
-
-        <h3> New Premium </h3>
-    </div>
-    <div class="hotpro-text text2">
-        <p>Here’s some of our most Premium products people are in love with.</p>
-    </div>
-
-    <div class="hot-product">
-
-
-        <div class="hot-background1 backg">
-
-        </div>
-        <div class="hot-background2 backg">
-
-        </div>
-    </div>
-    <div class="trend-price">
-        <div class="cart1 cart">
-            <p>Flat Bedsheet with Matching Two Pillow CoverFlat Bedsheet Premium <br> 1000 TC
-                100% Egyptian Cotton Flat Bedsheet | Chadar Bed (Dark Grey, King)</p><br>
-            <span class="old-price">Rs. 22,600.00</span>&nbsp; <span style="color: red;"> Rs. 8,300.00</span>
-            <br><br>
-
-            <button class="btn">Buy now</button>&nbsp; &nbsp;
-            <button class="btn">Add to
-                <i class="fa-solid fa-cart-shopping"></i></a> </button>
-
-
-        </div>
-
-        <div class="cart2 cart">
-            <p>Flat Bedsheet with Matching Two Pillow CoverFlat Bedsheet Premium <br> 1000 TC
-                100% Egyptian Cotton Flat Bedsheet | Chadar Bed (Modern Rose)</p><br>
-            <span class="old-price">Rs. 22,600.00</span>&nbsp; <span style="color: red;"> Rs. 8,999.00</span>
-            <br><br>
-
-            <button class="btn">Buy now</button>&nbsp; &nbsp;
-            <button class="btn">Add to
-                <i class="fa-solid fa-cart-shopping"></i></a> </button>
-
-        </div>
-
-
-
-    </div>
-    <div class="best-heading">
-        <h3>Under ₹7499 | Bestselling Product</h3>
-        <div style="margin-top: 5px;">
-            <p>Here’s some of our most Premium products people are in love with.</p>
-        </div>
-    </div>
-    <div class="best-container">
-        <div class="best-background1 best-backg " style="background-image: url(best-product1.jpg);">
-
-        </div>
-
-        <div class="best-background2 best-backg" style="background-image: url(best-product2.jpg);">
-
-        </div>
-        <div class="best-background3 best-backg" style="background-image: url(best-product3.jpg);">
-
-        </div>
-        <div class="best-background4 best-backg" style="background-image: url(best-product4.jpg);">
-
-        </div>
-
-    </div>
-    <div class="best-seller">
-        <div class="best-cart">
-            <p>Soft Velvet Quilted Bed Cover Blanket</p>
-            <span class="old-price">Rs. 22,600.00</span>&nbsp; <span style="color: red;"> Rs. 7,300.00</span>
-            <br><br>
-
-            <button class="btn">Buy now</button>&nbsp; &nbsp;
-            <button class="btn">Add to
-                <i class="fa-solid fa-cart-shopping"></i></a> </button>
-
-
-        </div>
-
-        <div class="best-cart2">
-            <p> Grainbold royal orchid</p>
-            <span class="old-price">Rs. 22,600.00</span>&nbsp; <span style="color: red;"> Rs. 6,999.00</span>
-            <br><br>
-
-            <button class="btn">Buy now</button>&nbsp; &nbsp;
-            <button class="btn">Add to
-                <i class="fa-solid fa-cart-shopping"></i></a> </button>
-
-        </div>
-        <div class="best-cart3">
-            <p>GRANDE WOOD AND METAL HYBRID BED</p>
-            <span class="old-price">Rs. 22,600.00</span>&nbsp; <span style="color: red;"> Rs. 7,499.00</span>
-            <br><br>
-
-            <button class="btn">Buy now</button>&nbsp; &nbsp;
-            <button class="btn">Add to
-                <i class="fa-solid fa-cart-shopping"></i></a> </button>
-
-
-        </div>
-
-        <div class="best-cart4">
-            <p>Flo Anti-Gravity™ Latex Mattress</p>
-            <span class="old-price">Rs. 22,600.00</span>&nbsp; <span style="color: red;"> Rs. 6,999.00</span>
-            <br><br>
-
-            <button class="btn">Buy now</button>&nbsp; &nbsp;
-            <button class="btn">Add to
-                <i class="fa-solid fa-cart-shopping"></i></a> </button>
-
-        </div>
-    </div>
-    <hr class="line" />
-    <!-- Features Section Start -->
-    <section class="features">
-        <div class="feature-box">
-            <i class="fas fa-truck"></i>
-            <h3>Fast Delivery</h3>
-            <p>Free shipping on all Global orders</p>
-        </div>
-        <div class="feature-box">
-            <i class="fas fa-credit-card"></i>
-            <h3>Safe Payment</h3>
-            <p>We ensure secure payment with PEV</p>
-        </div>
-        <div class="feature-box">
-            <i class="fas fa-headset"></i>
-            <h3>24/7 Online Support</h3>
-            <p>24 hours a day, 7 days a week</p>
-        </div>
-        <div class="feature-box">
-            <i class="fas fa-undo-alt"></i>
-            <h3>Free Returns</h3>
-            <p>Simply return it within 30 days</p>
-        </div>
-    </section>
-    <!-- Features Section End -->
-
-    <!-- Add this to your HTML file -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h4>Categories</h4>
-                <ul>
-                    <li>Bed Products</li>
-                    <li>Modern Trends</li>
-
-                    <li>New arrivals</li>
-                    <li>Modern</li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4>Information</h4>
-                <ul>
-                    <li>Register</li>
-                    <li>Login</li>
-                    <li>My Cart</li>
-                    <li>Wishlist</li>
-                    <li>Product Compare</li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4>About</h4>
-                <ul>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Store Location</li>
-                    <li>Blog</li>
-                    <li>FAQ</li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4>Services</h4>
-                <ul>
-                    <li>Order history</li>
-                    <li>Customer support</li>
-                    <li>Terms & conditions</li>
-                    <li>Returns & exchanges</li>
-                    <li>Shipping & delivery</li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h4>Sign Up Newsletter</h4>
-                <p>Subscribe to our newsletter and get 10% off your first purchase</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your email address" required>
-                    <button type="submit">→</button>
-                </form>
-                <div class="payment-icons">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
-                    <img src="rupay.png" alt="RuPay">
-                    <img src="masterCard.webp" alt="MasterCard" style="height:20px;">
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> hello@bedly.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra, India</p>
+                    </div>
+                    <div class="payment-methods">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                        <img src="rupay.png" alt="RuPay">
+                        <img src="masterCard.webp" alt="MasterCard">
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="footer-bottom">
-            <p>Copyright © 2025 Bedly all rights reserved. Powered by The4</p>
-            <div class="footer-links">
-                <a href="#">Shop</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Blog</a>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bedly. All rights reserved. | Designed with ❤️ for better sleep</p>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
 
-    <script type="module" src="firebase-auth.js"></script>
-    <script src="script.js"></script>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
 
-
-
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
 </body>
-
 </html>
