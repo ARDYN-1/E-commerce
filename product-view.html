@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Bedding Collection - Bedly</title>
+    <meta name="description" content="Discover our premium bedding collection with luxury comfort and style.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/product-view.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading Product...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="logo1.png" alt="Bedly" class="logo">
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Products <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Bedding</a>
+                        <a href="#" class="dropdown-item">Mattresses</a>
+                        <a href="#" class="dropdown-item">Pillows</a>
+                        <a href="#" class="dropdown-item">Furniture</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Contact</a>
+                </li>
+            </ul>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search products..." autocomplete="off">
+                    <button class="search-btn" id="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="search-suggestions" id="search-suggestions"></div>
+            </div>
+
+            <!-- Navigation Actions -->
+            <div class="nav-actions">
+                <button class="nav-action-btn" id="wishlist-btn" title="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="badge" id="wishlist-count">0</span>
+                </button>
+                <button class="nav-action-btn" id="cart-btn" title="Shopping Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge" id="cart-count">0</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <div class="container">
+            <ol class="breadcrumb-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="category-breadcrumb">Bedding</a></li>
+                <li class="current" id="product-breadcrumb">Premium Cotton Blanket</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="product-container">
+                <!-- Product Images -->
+                <div class="product-images">
+                    <div class="main-image-container">
+                        <img src="Product1.jpg" alt="Premium Cotton Blanket" class="main-image" id="main-image">
+                        <button class="favorite-btn" id="favorite-btn" title="Add to Favorites">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <div class="image-zoom-overlay" id="zoom-overlay"></div>
+                    </div>
+                    <div class="thumbnail-container">
+                        <div class="thumbnail-scroll">
+                            <img src="Product1.jpg" alt="View 1" class="thumbnail active" data-image="Product1.jpg">
+                            <img src="Product2.jpg" alt="View 2" class="thumbnail" data-image="Product2.jpg">
+                            <img src="Product3.jpg" alt="View 3" class="thumbnail" data-image="Product3.jpg">
+                            <img src="Product4.jpg" alt="View 4" class="thumbnail" data-image="Product4.jpg">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Details -->
+                <div class="product-details">
+                    <div class="product-header">
+                        <div class="product-badge">Premium Quality</div>
+                        <h1 class="product-title" id="product-title">Beautyrest 100% Cotton Blanket</h1>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-text">4.5 (124 reviews)</span>
+                        </div>
+                    </div>
+
+                    <div class="product-pricing">
+                        <div class="price-container">
+                            <span class="current-price" id="current-price">₹26,400</span>
+                            <span class="original-price" id="original-price">₹30,100</span>
+                            <span class="discount-badge">12% OFF</span>
+                        </div>
+                        <div class="savings-info">
+                            <i class="fas fa-tag"></i>
+                            <span>You save ₹3,700</span>
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <h3>Product Description</h3>
+                        <p>Experience ultimate comfort with our premium 100% cotton blanket. Crafted with the finest materials, this blanket offers exceptional softness and durability. Perfect for all seasons, it provides the ideal balance of warmth and breathability.</p>
+                        
+                        <div class="product-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> 100% Premium Cotton</li>
+                                <li><i class="fas fa-check"></i> Machine Washable</li>
+                                <li><i class="fas fa-check"></i> Hypoallergenic</li>
+                                <li><i class="fas fa-check"></i> Fade Resistant</li>
+                                <li><i class="fas fa-check"></i> 2-Year Warranty</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label>Size:</label>
+                            <div class="size-options">
+                                <button class="size-btn active" data-size="single">Single</button>
+                                <button class="size-btn" data-size="double">Double</button>
+                                <button class="size-btn" data-size="queen">Queen</button>
+                                <button class="size-btn" data-size="king">King</button>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label>Color:</label>
+                            <div class="color-options">
+                                <button class="color-btn active" data-color="white" style="background: #ffffff;" title="White"></button>
+                                <button class="color-btn" data-color="cream" style="background: #f5f5dc;" title="Cream"></button>
+                                <button class="color-btn" data-color="gray" style="background: #808080;" title="Gray"></button>
+                                <button class="color-btn" data-color="navy" style="background: #000080;" title="Navy"></button>
+                            </div>
+                        </div>
+
+                        <div class="option-group">
+                            <label for="quantity">Quantity:</label>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" id="decrease-qty">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10">
+                                <button class="quantity-btn" id="increase-qty">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <button class="btn btn-primary btn-buy-now" id="buy-now-btn">
+                            <i class="fas fa-bolt"></i>
+                            Buy Now
+                        </button>
+                        <button class="btn btn-secondary btn-add-cart" id="add-cart-btn">
+                            <i class="fas fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+
+                    <div class="product-guarantees">
+                        <div class="guarantee-item">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Free Shipping on orders above ₹2,999</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-undo"></i>
+                            <span>30-day Easy Returns</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>2-Year Warranty</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="product-tabs">
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="reviews">Reviews (124)</button>
+                    <button class="tab-btn" data-tab="specifications">Specifications</button>
+                    <button class="tab-btn" data-tab="shipping">Shipping & Returns</button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Reviews Tab -->
+                    <div class="tab-panel active" id="reviews-panel">
+                        <div class="reviews-summary">
+                            <div class="rating-overview">
+                                <div class="overall-rating">
+                                    <span class="rating-number">4.5</span>
+                                    <div class="rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="rating-count">Based on 124 reviews</span>
+                                </div>
+                                <div class="rating-breakdown">
+                                    <div class="rating-bar">
+                                        <span>5★</span>
+                                        <div class="bar"><div class="fill" style="width: 65%"></div></div>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>4★</span>
+                                        <div class="bar"><div class="fill" style="width: 25%"></div></div>
+                                        <span>25%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>3★</span>
+                                        <div class="bar"><div class="fill" style="width: 8%"></div></div>
+                                        <span>8%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>2★</span>
+                                        <div class="bar"><div class="fill" style="width: 2%"></div></div>
+                                        <span>2%</span>
+                                    </div>
+                                    <div class="rating-bar">
+                                        <span>1★</span>
+                                        <div class="bar"><div class="fill" style="width: 0%"></div></div>
+                                        <span>0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reviews-list">
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <div class="reviewer-avatar">
+                                            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=1" alt="Sarah M.">
+                                        </div>
+                                        <div class="reviewer-details">
+                                            <h4>Sarah M.</h4>
+                                            <span class="review-date">2 weeks ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <h5>Absolutely love this blanket!</h5>
+                                    <p>The quality is exceptional and it's so soft and comfortable. Perfect weight for all seasons. Highly recommend!</p>
+                                    <div class="review-helpful">
+                                        <button class="helpful-btn">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            Helpful (12)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <div class="reviewer-avatar">
+                                            <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=1" alt="Mike R.">
+                                        </div>
+                                        <div class="reviewer-details">
+                                            <h4>Mike R.</h4>
+                                            <span class="review-date">1 month ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <h5>Great quality, fast delivery</h5>
+                                    <p>Excellent blanket with premium feel. Delivery was quick and packaging was perfect. Would buy again.</p>
+                                    <div class="review-helpful">
+                                        <button class="helpful-btn">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            Helpful (8)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-info">
+                                        <div class="reviewer-avatar">
+                                            <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=1" alt="Emma L.">
+                                        </div>
+                                        <div class="reviewer-details">
+                                            <h4>Emma L.</h4>
+                                            <span class="review-date">3 weeks ago</span>
+                                        </div>
+                                    </div>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="review-content">
+                                    <h5>Perfect for sensitive skin</h5>
+                                    <p>As someone with sensitive skin, this blanket is perfect. It's hypoallergenic and incredibly soft. No irritation at all!</p>
+                                    <div class="review-helpful">
+                                        <button class="helpful-btn">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            Helpful (15)
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-outline load-more-reviews">Load More Reviews</button>
+                    </div>
+
+                    <!-- Specifications Tab -->
+                    <div class="tab-panel" id="specifications-panel">
+                        <div class="specifications-grid">
+                            <div class="spec-group">
+                                <h4>Material & Care</h4>
+                                <div class="spec-item">
+                                    <span class="spec-label">Material:</span>
+                                    <span class="spec-value">100% Premium Cotton</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Thread Count:</span>
+                                    <span class="spec-value">300 TC</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Care Instructions:</span>
+                                    <span class="spec-value">Machine wash cold, tumble dry low</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Hypoallergenic:</span>
+                                    <span class="spec-value">Yes</span>
+                                </div>
+                            </div>
+
+                            <div class="spec-group">
+                                <h4>Dimensions</h4>
+                                <div class="spec-item">
+                                    <span class="spec-label">Single:</span>
+                                    <span class="spec-value">150 x 220 cm</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Double:</span>
+                                    <span class="spec-value">180 x 220 cm</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Queen:</span>
+                                    <span class="spec-value">200 x 220 cm</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">King:</span>
+                                    <span class="spec-value">220 x 240 cm</span>
+                                </div>
+                            </div>
+
+                            <div class="spec-group">
+                                <h4>Product Details</h4>
+                                <div class="spec-item">
+                                    <span class="spec-label">Weight:</span>
+                                    <span class="spec-value">1.2 kg (varies by size)</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Country of Origin:</span>
+                                    <span class="spec-value">India</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Warranty:</span>
+                                    <span class="spec-value">2 Years</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Certification:</span>
+                                    <span class="spec-value">OEKO-TEX Standard 100</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shipping Tab -->
+                    <div class="tab-panel" id="shipping-panel">
+                        <div class="shipping-info">
+                            <div class="shipping-section">
+                                <h4><i class="fas fa-shipping-fast"></i> Shipping Information</h4>
+                                <ul>
+                                    <li>Free shipping on orders above ₹2,999</li>
+                                    <li>Standard delivery: 3-5 business days</li>
+                                    <li>Express delivery: 1-2 business days (additional charges apply)</li>
+                                    <li>Same-day delivery available in select cities</li>
+                                    <li>Cash on delivery available</li>
+                                </ul>
+                            </div>
+
+                            <div class="shipping-section">
+                                <h4><i class="fas fa-undo"></i> Returns & Exchanges</h4>
+                                <ul>
+                                    <li>30-day hassle-free returns</li>
+                                    <li>Free return pickup</li>
+                                    <li>Exchange available for size and color</li>
+                                    <li>Refund processed within 5-7 business days</li>
+                                    <li>Items must be in original condition with tags</li>
+                                </ul>
+                            </div>
+
+                            <div class="shipping-section">
+                                <h4><i class="fas fa-shield-alt"></i> Warranty & Support</h4>
+                                <ul>
+                                    <li>2-year manufacturer warranty</li>
+                                    <li>24/7 customer support</li>
+                                    <li>Quality guarantee</li>
+                                    <li>Replacement for manufacturing defects</li>
+                                    <li>Care instructions included</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <section class="related-products">
+                <h2>You May Also Like</h2>
+                <div class="related-grid">
+                    <div class="related-item">
+                        <img src="Product2.jpg" alt="Related Product 1">
+                        <h4>Berkshire Blanket-Waffle</h4>
+                        <div class="related-price">₹37,200</div>
+                        <button class="btn btn-sm btn-outline">View Product</button>
+                    </div>
+                    <div class="related-item">
+                        <img src="Product3.jpg" alt="Related Product 2">
+                        <h4>Cotton Weave Diamond Blanket</h4>
+                        <div class="related-price">₹44,100</div>
+                        <button class="btn btn-sm btn-outline">View Product</button>
+                    </div>
+                    <div class="related-item">
+                        <img src="Product5.jpg" alt="Related Product 3">
+                        <h4>Gel Memory Foam Pillow</h4>
+                        <div class="related-price">₹28,300</div>
+                        <button class="btn btn-sm btn-outline">View Product</button>
+                    </div>
+                    <div class="related-item">
+                        <img src="Product8.jpg" alt="Related Product 4">
+                        <h4>Sage Blue Throw Blanket</h4>
+                        <div class="related-price">₹10,700</div>
+                        <button class="btn btn-sm btn-outline">View Product</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i class="toast-icon"></i>
+            <span class="toast-message"></span>
+        </div>
+        <button class="toast-close" onclick="hideToast()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <!-- Scripts -->
+    <script src="js/product-view.js"></script>
+</body>
+</html>
