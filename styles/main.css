@@ -428,30 +428,73 @@ a:hover {
 .mobile-menu-btn {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
     padding: var(--space-3) !important;
     cursor: pointer;
+    background: none;
+    border: none;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.mobile-menu-btn:hover {
+    background: var(--gray-100);
+    transform: scale(1.05);
 }
 
 .mobile-menu-btn span {
     width: 24px;
     height: 3px;
     background: var(--gray-700);
-    transition: all var(--transition-fast);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     border-radius: var(--radius-full);
+    display: block;
+    position: absolute;
+    transform-origin: center;
+}
+
+.mobile-menu-btn span:nth-child(1) {
+    top: 50%;
+    transform: translateY(-8px);
+}
+
+.mobile-menu-btn span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-1.5px);
+}
+
+.mobile-menu-btn span:nth-child(3) {
+    top: 50%;
+    transform: translateY(5px);
 }
 
 .mobile-menu-btn.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: translateY(-1.5px) rotate(45deg);
 }
 
 .mobile-menu-btn.active span:nth-child(2) {
     opacity: 0;
-    transform: scale(0);
+    transform: translateY(-1.5px) scale(0);
 }
 
 .mobile-menu-btn.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: translateY(-1.5px) rotate(-45deg);
+}
+
+.mobile-menu-btn.active {
+    background: var(--primary-color);
+}
+
+.mobile-menu-btn.active span {
+    background: var(--white);
+}
+
+.mobile-menu-btn.active:hover {
+    background: var(--primary-dark);
 }
 
 @media (min-width: 768px) {

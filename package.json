@@ -4,9 +4,9 @@
   "description": "Bedly - Premium Bedroom Essentials E-commerce Website",
   "main": "index.html",
   "scripts": {
-    "dev": "python -m http.server 3000",
-    "start": "python -m http.server 3000",
-    "serve": "python -m http.server 3000"
+    "dev": "http-server . -p 3000 -c-1",
+    "start": "http-server . -p 3000 -c-1",
+    "serve": "http-server . -p 3000 -c-1"
   },
   "keywords": [
     "ecommerce",
