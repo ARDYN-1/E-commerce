@@ -4,9 +4,15 @@
   "description": "Bedly - Premium Bedroom Essentials E-commerce Website",
   "main": "index.html",
   "scripts": {
+<<<<<<< HEAD
     "dev": "python -m http.server 3000",
     "start": "python -m http.server 3000",
     "serve": "python -m http.server 3000"
+=======
+    "dev": "http-server . -p 3000 -c-1",
+    "start": "http-server . -p 3000 -c-1",
+    "serve": "http-server . -p 3000 -c-1"
+>>>>>>> 965c8f73cd1bd235298819f265bcba1a151b3478
   },
   "keywords": [
     "ecommerce",
@@ -22,6 +28,13 @@
     "url": "https://github.com/your-username/bedly-ecommerce.git"
   },
   "homepage": "https://e-commerceewebsite.netlify.app",
+<<<<<<< HEAD
   "devDependencies": {},
   "dependencies": {}
 }
+=======
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
+>>>>>>> 965c8f73cd1bd235298819f265bcba1a151b3478

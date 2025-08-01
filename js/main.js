@@ -97,7 +97,23 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!isActive) {
             const menuItems = navMenu.querySelectorAll('.nav-item');
             menuItems.forEach((item, index) => {
+<<<<<<< HEAD
                 item.style.animation = `slideInLeft 0.3s ease-out ${index * 0.1}s both`;
+=======
+                item.style.animation = `slideInLeft 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) ${index * 0.1}s both`;
+            });
+            
+            // Handle dropdown toggles in mobile menu
+            const dropdowns = navMenu.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('.nav-link');
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        dropdown.classList.toggle('active');
+                    }
+                });
+>>>>>>> 965c8f73cd1bd235298819f265bcba1a151b3478
             });
         }
     });
@@ -422,6 +438,112 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+<<<<<<< HEAD
+=======
+    wishlistBtn.addEventListener('click', () => {
+        openWishlistModal();
+    });
+    
+    function openWishlistModal() {
+        const wishlistModal = createWishlistModal();
+        document.body.appendChild(wishlistModal);
+        openModal(wishlistModal);
+    }
+    
+    function createWishlistModal() {
+        const modal = document.createElement('div');
+        modal.className = 'modal wishlist-modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-labelledby', 'wishlist-title');
+        modal.setAttribute('aria-modal', 'true');
+        
+        const wishlistItems = ProductData.wishlist;
+        
+        modal.innerHTML = `
+            <div class="modal-content wishlist-content" style="max-width: 800px;">
+                <button class="modal-close" onclick="this.closest('.modal').remove()" aria-label="Close wishlist">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="wishlist-header">
+                    <h2 id="wishlist-title">My Wishlist</h2>
+                    <span class="wishlist-count">${wishlistItems.length} item${wishlistItems.length !== 1 ? 's' : ''}</span>
+                </div>
+                <div class="wishlist-items">
+                    ${wishlistItems.length === 0 ? `
+                        <div class="empty-wishlist">
+                            <div class="empty-wishlist-icon">
+                                <i class="far fa-heart"></i>
+                            </div>
+                            <h3>Your wishlist is empty</h3>
+                            <p>Save items you love to your wishlist and shop them later!</p>
+                            <button class="btn btn-primary" onclick="this.closest('.modal').remove(); document.getElementById('products').scrollIntoView({ behavior: 'smooth' });">
+                                Start Shopping
+                            </button>
+                        </div>
+                    ` : wishlistItems.map((item, index) => `
+                        <div class="wishlist-item" style="animation: slideInUp 0.3s ease-out ${index * 0.1}s both;">
+                            <div class="wishlist-item-image" style="background-image: url('${item.image}')"></div>
+                            <div class="wishlist-item-details">
+                                <h4 class="wishlist-item-title">${item.name}</h4>
+                                <div class="wishlist-item-price">${ProductData.formatCurrency(item.price)}</div>
+                                <div class="wishlist-item-actions">
+                                    <button class="btn btn-primary btn-sm" onclick="addToCartWithAnimation('${item.id}'); showNotification('${item.name} added to cart!', 'success');">
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                    <button class="btn btn-outline btn-sm" onclick="removeFromWishlist('${item.id}'); this.closest('.wishlist-item').remove(); updateWishlistCount();">
+                                        <i class="fas fa-trash"></i> Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                ${wishlistItems.length > 0 ? `
+                    <div class="wishlist-footer">
+                        <button class="btn btn-outline" onclick="clearWishlist(); this.closest('.modal').remove();">
+                            Clear All
+                        </button>
+                        <button class="btn btn-primary" onclick="addAllToCart(); this.closest('.modal').remove();">
+                            Add All to Cart
+                        </button>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+        
+        // Close on overlay click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.remove();
+            }
+        });
+        
+        return modal;
+    }
+    
+    function clearWishlist() {
+        if (confirm('Are you sure you want to clear your entire wishlist?')) {
+            ProductData.wishlist = [];
+            ProductData.saveToStorage();
+            updateWishlistUI();
+            showNotification('Wishlist cleared', 'info');
+        }
+    }
+    
+    function addAllToCart() {
+        let addedCount = 0;
+        ProductData.wishlist.forEach(item => {
+            if (ProductData.addToCart(item.id)) {
+                addedCount++;
+            }
+        });
+        
+        if (addedCount > 0) {
+            showNotification(`${addedCount} item${addedCount !== 1 ? 's' : ''} added to cart!`, 'success');
+        }
+    }
+    
+>>>>>>> 965c8f73cd1bd235298819f265bcba1a151b3478
     // Enhanced cart sidebar
     const cartBtn = document.getElementById('cart-btn');
     const cartSidebar = document.getElementById('cart-sidebar');
