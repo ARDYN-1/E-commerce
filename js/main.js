@@ -1,5 +1,50 @@
 // Enhanced Main Application Logic
 document.addEventListener('DOMContentLoaded', function() {
+    // Declare all DOM element references at the top to avoid temporal dead zone issues
+    const header = document.getElementById('header');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+    const overlay = document.getElementById('overlay');
+    const searchBtn = document.getElementById('search-btn');
+    const searchModal = document.getElementById('search-modal');
+    const searchClose = document.getElementById('search-close');
+    const searchInput = document.getElementById('search-input');
+    const userBtn = document.getElementById('user-btn');
+    const userModal = document.getElementById('user-modal');
+    const userClose = document.getElementById('user-close');
+    const cartBtn = document.getElementById('cart-btn');
+    const wishlistBtn = document.getElementById('wishlist-btn');
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const cartClose = document.getElementById('cart-close');
+    const backToTop = document.getElementById('back-to-top');
+    const loadMoreBtn = document.getElementById('load-more');
+    
+    // Enhanced intersection observer for animations - declare early
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+                
+                // Add stagger effect for grid items
+                if (element.parentElement.classList.contains('products-grid') ||
+                    element.parentElement.classList.contains('features-grid')) {
+                    const siblings = Array.from(element.parentElement.children);
+                    const index = siblings.indexOf(element);
+                    element.style.transitionDelay = `${index * 0.1}s`;
+                }
+                
+                animationObserver.unobserve(element);
+            }
+        });
+    }, observerOptions);
+    
     // Performance monitoring
     const performanceObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
@@ -44,7 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Enhanced header scroll effect with throttling
-    const header = document.getElementById('header');
     let lastScrollY = window.scrollY;
     let ticking = false;
     
@@ -79,10 +123,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', requestTick, { passive: true });
     
     // Enhanced mobile menu with improved animations
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const navMenu = document.getElementById('nav-menu');
-    const overlay = document.getElementById('overlay');
-    
     mobileMenuBtn.addEventListener('click', () => {
         const isActive = mobileMenuBtn.classList.contains('active');
         
@@ -128,11 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Enhanced search modal with debounced search
-    const searchBtn = document.getElementById('search-btn');
-    const searchModal = document.getElementById('search-modal');
-    const searchClose = document.getElementById('search-close');
-    const searchInput = document.getElementById('search-input');
-    
     searchBtn.addEventListener('click', () => {
         openModal(searchModal);
         setTimeout(() => searchInput.focus(), 150);
@@ -211,10 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Enhanced user modal with form validation
-    const userBtn = document.getElementById('user-btn');
-    const userModal = document.getElementById('user-modal');
-    const userClose = document.getElementById('user-close');
-    
     userBtn.addEventListener('click', () => {
         openModal(userModal);
     });
@@ -538,10 +569,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Enhanced cart sidebar
-    const cartBtn = document.getElementById('cart-btn');
-    const cartSidebar = document.getElementById('cart-sidebar');
-    const cartClose = document.getElementById('cart-close');
-    
     cartBtn.addEventListener('click', () => {
         openModal(cartSidebar, 'sidebar');
     });
@@ -736,7 +763,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Enhanced back to top button with progress indicator
-    const backToTop = document.getElementById('back-to-top');
     let scrollProgress = 0;
     
     function updateScrollProgress() {
@@ -766,7 +792,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Enhanced load more products with infinite scroll option
     let productsLoaded = 12;
-    const loadMoreBtn = document.getElementById('load-more');
     let isLoadingMore = false;
     
     if (loadMoreBtn) {
@@ -818,32 +843,6 @@ document.addEventListener('DOMContentLoaded', function() {
             loadMoreBtn.disabled = false;
         }
     }
-    
-    // Enhanced intersection observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const animationObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const element = entry.target;
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-                
-                // Add stagger effect for grid items
-                if (element.parentElement.classList.contains('products-grid') ||
-                    element.parentElement.classList.contains('features-grid')) {
-                    const siblings = Array.from(element.parentElement.children);
-                    const index = siblings.indexOf(element);
-                    element.style.transitionDelay = `${index * 0.1}s`;
-                }
-                
-                animationObserver.unobserve(element);
-            }
-        });
-    }, observerOptions);
     
     // Observe elements for animation
     function observeElements() {
