@@ -540,7 +540,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Enhanced cart sidebar
     const cartBtn = document.getElementById('cart-btn');
     const wishlistBtn = document.getElementById('wishlist-btn');
-    const wishlistBtn = document.getElementById('wishlist-btn');
     const cartSidebar = document.getElementById('cart-sidebar');
     const cartClose = document.getElementById('cart-close');
     
