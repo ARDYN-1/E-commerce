@@ -540,8 +540,35 @@ document.addEventListener('DOMContentLoaded', function() {
     // Enhanced cart sidebar
     const cartBtn = document.getElementById('cart-btn');
     const wishlistBtn = document.getElementById('wishlist-btn');
+    const wishlistBtn = document.getElementById('wishlist-btn');
     const cartSidebar = document.getElementById('cart-sidebar');
     const cartClose = document.getElementById('cart-close');
+    
+    // Enhanced intersection observer for animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+                
+                // Add stagger effect for grid items
+                if (element.parentElement.classList.contains('products-grid') ||
+                    element.parentElement.classList.contains('features-grid')) {
+                    const siblings = Array.from(element.parentElement.children);
+                    const index = siblings.indexOf(element);
+                    element.style.transitionDelay = `${index * 0.1}s`;
+                }
+                
+                animationObserver.unobserve(element);
+            }
+        });
+    }, observerOptions);
     
     cartBtn.addEventListener('click', () => {
         openModal(cartSidebar, 'sidebar');
@@ -819,32 +846,6 @@ document.addEventListener('DOMContentLoaded', function() {
             loadMoreBtn.disabled = false;
         }
     }
-    
-    // Enhanced intersection observer for animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const animationObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const element = entry.target;
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-                
-                // Add stagger effect for grid items
-                if (element.parentElement.classList.contains('products-grid') ||
-                    element.parentElement.classList.contains('features-grid')) {
-                    const siblings = Array.from(element.parentElement.children);
-                    const index = siblings.indexOf(element);
-                    element.style.transitionDelay = `${index * 0.1}s`;
-                }
-                
-                animationObserver.unobserve(element);
-            }
-        });
-    }, observerOptions);
     
     // Observe elements for animation
     function observeElements() {
